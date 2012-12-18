@@ -1,0 +1,10 @@
+<form method="POST" action="/plists" enctype="multipart/form-data">
+  <legend>Filename</legend>
+  <input class="span12" name="filename" type="text" placeholder="foo.plist" value="<%= @filename %>">
+
+  <legend>Plist Content</legend>
+  <textarea class="span12" rows="24" name="content" value="<%= @content %>"></textarea>
+  <span class="help-block">Be sure that your plist is well-formatted.</span>
+
+  <button class="btn btn-info" type="submit">Submit</button>
+</form>

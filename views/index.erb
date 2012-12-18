@@ -1,0 +1,25 @@
+<header class="clearfix">
+    <h3 class="pull-left">Ground Control</h3>
+    <a href="/plists/new" class="btn btn-primary pull-right" style="margin-top:16px">New Plist</a>
+</header>
+
+<%= partial :flash %>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Filename</th>
+            <th>Last Modified</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% @files.each do |f| %>
+        <tr>
+            <td><a href="http://<%= ENV['S3_BUCKET_NAME'] %>.s3.amazonaws.com/<%= f.key %>"><%= f.key %></a></td>
+            <td><%= f.last_modified %></td>
+            <td><a class="btn btn-small" href="plists/<%= f.key %>/edit">Edit</a>  <form style="display:inline-block"  action="plists/<%= f.key %>" method="post"><input name="_method" type="hidden" value="delete" /><button class="btn btn-small btn-danger">Delete</button></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
