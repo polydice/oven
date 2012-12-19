@@ -85,9 +85,10 @@ module Oven
         erb :new
       else
         file = directory.files.create(
-          :key    => params[:filename],
-          :body   => params[:content],
-          :public => true
+          :content_type => "application/x-plist",
+          :key                => params[:filename],
+          :body              => params[:content],
+          :public            => true
         )
 
         flash[:succss] = "The file has been created."
