@@ -4,6 +4,7 @@ require 'sinatra/flash'
 require 'sinatra_auth_github'
 require 'fog'
 require 'plist'
+require 'htmlentities'
 
 module Oven
   class App < Sinatra::Base
@@ -68,6 +69,7 @@ module Oven
       file = directory.files.get(params[:key])
       @filename = params[:key]
       @content = file.body
+      @encoded_content = HTMLEntities.new.encode(file.body)
       @title = "Edit Plist"
 
       erb :new

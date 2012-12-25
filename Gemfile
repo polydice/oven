@@ -16,6 +16,9 @@ gem 'plist'
 # App server
 gem 'thin'
 
+# HTML entities
+gem 'htmlentities', :require => 'htmlentities'
+
 # Development tools
 group :development do
   gem 'foreman'

@@ -32,6 +32,7 @@ GEM
       rubyzip
     heroku-api (0.3.6)
       excon (~> 0.16.7)
+    htmlentities (4.3.1)
     json (1.7.5)
     launchy (2.1.2)
       addressable (~> 2.3)
@@ -95,6 +96,7 @@ DEPENDENCIES
   fog
   foreman
   heroku
+  htmlentities
   plist
   sinatra-flash
   sinatra-partial
