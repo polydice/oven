@@ -77,10 +77,17 @@ module Oven
       @title = "New Plist"
       @filename = params[:filename]
       @content = params[:content]
+
+      begin
+        data = Plist::parse_xml(@content)
+      rescue Exception => e
+        data = nil
+      end
+
       if !@filename =~ /.plist$/
         flash[:error] = 'Your filename should end with ".plist" to be right format.'
         erb :new
-      elsif Plist::parse_xml(@content).nil?
+      elsif data.nil?
         flash[:error] = 'Your plist content cannot be parsed. Please check again.'
         erb :new
       else
