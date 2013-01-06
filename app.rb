@@ -47,12 +47,12 @@ module Oven
     end
 
     def directory
-      connection.directories.get(ENV['S3_BUCKET_NAME'])
+      connection.directories.get(ENV['AWS_S3_BUCKET_NAME'])
     end
 
     # Check authentication
     before do
-      github_team_authenticate!(ENV['GITHUB_AUTHENTICATION_TEAM'].to_i)
+      github_team_authenticate!(ENV['GITHUB_AUTHENTICATION_TEAM_ID'].to_i) if ENV['GITHUB_AUTHENTICATION_TEAM_ID']
     end
 
     get '/' do
